@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<title>Web Components</title>
+	<title>Web components Foundations 2</title>
 	<style>
 		h2{
 			color: red;
@@ -10,71 +10,83 @@
 	</style>
 </head>
 <body>
-	<!--opcion 1-->
-	<h2>Calling a custom element</h2>
-	<my-component></my-component>
+	<h2>Custom elements with HTML inside and showing insertion points</h2>
+	<!--example 1-->
+	<comment-form>
+		<p class="instructions">Please fill this form</p>
+		<h3>It is a pleasure to serve you</h3>
+		<p class="footer">Suscribe now</p>
+		<h1>Form</h1>
+	</comment-form/>
+
+	<template>
+		<fieldset>
+			<legend>
+				<content select="h1"></content>
+			</legend>
+			<content select="p.instructions"></content>
+			<textarea cols="30" rows="10"></textarea>
+			<input type="submit" value="Submit">
+			<content select=".footer"></content>
+			<content></content><!--any content that doent match with content selectors above-->
+		</fieldset>
+	</template>
 	<hr>
-	<h2>Extending a button</h2>
-	<button is="super-button"></button>
+	<h2>Insertion Point on Shadow DOM</h2>
+	<!--example 2-->
+	<div id="shadowhost">
+		<h1>shadow inside shadow</h1>
+	</div>
 	<hr>
-	<h2>Working with Shadow DOM</h2>
-	<div id="host"></div>
-	<div id="host2">
+	<h2>Events on Shadow DOM</h2>
+	<!--example 3-->
+	<button id="light-dom-btn">Light Dom Btn</button>
+	<div id="event-host">
 		
 	</div>
-	<template id="shadow">
-		<style>
-			h1{
-				color: blue;
-			}
-		</style>
-		<h1>Hello world from Shadow DOM inside a template</h1>
+
+	<template id="event-template">
+		<button id="shadow-dom-btn">Shadow Dom Btn</button>
+		<select name="" id="shadowselect">
+			<option value="option">Option</option>
+			<option value="option">Option</option>
+			<option value="option">Option</option>
+		</select>
 	</template>
-	<hr>
-	<h2>Working with templates</h2>
-	<template id="test">
-		<div>
-			<p>Hello <span class="person"></span></p>
-		</div>
-	</template>
+
 	<script>
-		//custom elements
-		var myComponent = Object.create(HTMLElement.prototype);
-		myComponent.createdCallback = function(){
-			this.innerHTML = "<h3>My Component</h3><input type='text'><br />"
-		}
-		document.registerElement("my-component",{
-			prototype: myComponent
-		});
-
-		//Extend a button
-		var protoButton = Object.create(HTMLButtonElement.prototype);
-		protoButton.createdCallback = function (){
-			this.innerHTML = "button";
-			this.style.color = "blue"
+		// Insertion Point
+		var proto = Object.create(HTMLElement.prototype);
+		proto.createdCallback = function(){
+			var template = document.querySelector("template");
+			var shadow = this.createShadowRoot();
+			shadow.appendChild(document.importNode(template.content,true));
 		}
 
-		var superButton = document.registerElement("super-button",{
-			prototype: protoButton,
-			extends: 'button'
+		document.registerElement("comment-form",{
+			prototype: proto
+		})
+
+		//shadow dom insertion point
+		var host = document.querySelector("#shadowhost");
+		var root1 = host.createShadowRoot();
+		var root2 = host.createShadowRoot();//just the last shadow root is rendered
+		root1.innerHTML = "<p>Root1</p>";
+		root2.innerHTML = "<p>Root2</p><shadow></shadow>";//to render the previous shadow dom we need to use the shadow tag, content tag can be used if it´s needed
+
+		//event
+		var hostevent = document.querySelector("#event-host");
+		var rootevent = hostevent.createShadowRoot();
+		var templateevent = document.querySelector("#event-template");
+		rootevent.appendChild(document.importNode(templateevent.content,true));
+
+		document.addEventListener("click",function(e){
+			console.log(e.target.id);//On Shadow Dom who receives the event is the container, not the element
 		});
 
-		//templates
-		var template = document.querySelector("#test");
-		var clone = document.importNode(template.content,true);
-		clone.querySelector(".person").innerHTML="Marvin Solano Eduarte";
-		document.body.appendChild(clone);
-
-		//shadow DOM
-		var host = document.querySelector("#host");
-		var root = host.createShadowRoot();
-		root.innerHTML = "<h1>Hello world from Shadow DOM</h1>";
-
-		var host2 = document.querySelector("#host2");
-		var templateshadow = document.querySelector("#shadow");
-		var cloneshadow = document.importNode(templateshadow.content,true);
-		var root2 = host2.createShadowRoot();
-		root2.appendChild(cloneshadow);
+		document.addEventListener("change",function(e){
+			console.log(e.target.id);
+		});
 	</script>
 </body>
 </html>
