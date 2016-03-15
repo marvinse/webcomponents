@@ -1,0 +1,36 @@
+<template>
+	<style>
+		ul{
+			background-color: gray;
+		}
+	</style>
+	<a href="#" id="view-disclaimer">View disclaimer</a>
+	<ul>
+		<li>BMW X6</li>
+		<li>Audi Q7</li>
+		<li>Lamborghini Aventador</li>
+	</ul>
+</template>
+<script>
+	(function(){
+		var Proto = Object.create(HTMLElement.prototype);
+		var currentScript = document.currentScript.ownerDocument;
+		Proto.createdCallback = function(){
+			var template = currentScript.querySelector("template");
+			var templateClone = document.importNode(template.content,true);
+			var disclaimer = templateClone.querySelector("#view-disclaimer");
+
+			disclaimer.addEventListener("click",function(){
+				alert("disclaimer activated");
+			});
+
+			var root = this.createShadowRoot();
+			root.appendChild(templateClone);
+		};
+
+		document.registerElement("dream-garage",{
+			prototype: Proto
+		});
+
+	})();
+</script>

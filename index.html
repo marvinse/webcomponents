@@ -2,79 +2,13 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<title>Web Components</title>
-	<style>
-		h2{
-			color: red;
-		}
-	</style>
+	<title>Web components Advanced</title>
+	<link rel="import" href="dream-garage.html" id="dream-garage">
 </head>
 <body>
-	<!--opcion 1-->
-	<h2>Calling a custom element</h2>
-	<my-component></my-component>
-	<hr>
-	<h2>Extending a button</h2>
-	<button is="super-button"></button>
-	<hr>
-	<h2>Working with Shadow DOM</h2>
-	<div id="host"></div>
-	<div id="host2">
-		
-	</div>
-	<template id="shadow">
-		<style>
-			h1{
-				color: blue;
-			}
-		</style>
-		<h1>Hello world from Shadow DOM inside a template</h1>
-	</template>
-	<hr>
-	<h2>Working with templates</h2>
-	<template id="test">
-		<div>
-			<p>Hello <span class="person"></span></p>
-		</div>
-	</template>
-	<script>
-		//custom elements
-		var myComponent = Object.create(HTMLElement.prototype);
-		myComponent.createdCallback = function(){
-			this.innerHTML = "<h3>My Component</h3><input type='text'><br />"
-		}
-		document.registerElement("my-component",{
-			prototype: myComponent
-		});
-
-		//Extend a button
-		var protoButton = Object.create(HTMLButtonElement.prototype);
-		protoButton.createdCallback = function (){
-			this.innerHTML = "button";
-			this.style.color = "blue"
-		}
-
-		var superButton = document.registerElement("super-button",{
-			prototype: protoButton,
-			extends: 'button'
-		});
-
-		//templates
-		var template = document.querySelector("#test");
-		var clone = document.importNode(template.content,true);
-		clone.querySelector(".person").innerHTML="Marvin Solano Eduarte";
-		document.body.appendChild(clone);
-
-		//shadow DOM
-		var host = document.querySelector("#host");
-		var root = host.createShadowRoot();
-		root.innerHTML = "<h1>Hello world from Shadow DOM</h1>";
-
-		var host2 = document.querySelector("#host2");
-		var templateshadow = document.querySelector("#shadow");
-		var cloneshadow = document.importNode(templateshadow.content,true);
-		var root2 = host2.createShadowRoot();
-		root2.appendChild(cloneshadow);
-	</script>
+	<dream-garage></dream-garage>
+	<ul>
+		<li>Styles are encapsulated</li>
+	</ul>
 </body>
 </html>
