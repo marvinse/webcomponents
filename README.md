@@ -11,3 +11,14 @@ In order to create a custom element, we need to do 3 simple steps:
 - Create a new HTML Element
 - Create the callback, there are 4 callbacks (createdCallback, attachedCallback, detachedCallback and attributeChangeCallback)
 - We must register the element
+
+```javascript
+var myComponent = Object.create(HTMLElement.prototype);
+myComponent.createdCallback = function(){
+  this.innerHTML = "<p>Example</p>"
+}
+document.registerElement("my-component",{
+  prototype: myComponent
+});
+```
+## Working with templates
