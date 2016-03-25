@@ -102,4 +102,4 @@ document.addEventListener("change",function(e){
 
 Note that change event is treated like a click on shadow dom.
 
-You can now go to [Webcomponents Intermediate] (https://github.com/marvinse/webcomponents/tree/webcomponentsfoundations2).
+You can now go to [Webcomponents Intermediate] (https://github.com/marvinse/webcomponents/tree/webcomponentsintermediate).
