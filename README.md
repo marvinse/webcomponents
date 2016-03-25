@@ -104,3 +104,4 @@ var cloneshadow = document.importNode(templateshadow.content,true);
 var root2 = host2.createShadowRoot();
 root2.appendChild(cloneshadow);
 ```
+You can now go to [Webcomponents Foundations 2](https://github.com/marvinse/webcomponents/tree/webcomponentsfoundations2).
