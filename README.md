@@ -46,4 +46,6 @@ var template = document.querySelector("template");
 root.appendChild(template.content);
 ```
 
-The :host selector allow us to style the shadow host itself, and the :host-context is pretty similar, because allow us to style the shadow host, but we can put the host-context class in the host or in any host parent
+The :host selector allow us to style the shadow host itself, and the :host-context is pretty similar, because allow us to style the shadow host, but we can put the host-context class in the host or in any host parent.
+
+You can now go to [Webcomponents Intermediate 2] (https://github.com/marvinse/webcomponents/tree/webcomponentsintermediate2).
