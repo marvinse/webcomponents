@@ -118,3 +118,4 @@ custom-reallyunresolved:unresolved{
 </style>
 <custom-reallyunresolved>Im unresolved</custom-reallyunresolved>
 ```
+You can now go to [Webcomponents Master Class] (https://github.com/marvinse/webcomponents/).
