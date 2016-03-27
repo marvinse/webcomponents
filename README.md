@@ -70,7 +70,7 @@ document.body.appendChild(clone);
 ```
 
 ## How to create Shadow DOM and its advantages
-Shadow DOM is DOM that we are not able to see, for example when we use the video tag it contains a lot of buttons, of course we did not create those buttons, the shadow dom did it.
+Shadow DOM is DOM that we are not able to see, for example when we use the video tag it contains a lot of buttons, of course we did not create those buttons, the shadow dom did it. We are not able to select the Shadow DOM using `document.getElementByID` or any other of these selectors.
 We need to follow 3 steps to create a shadow dom:
 - Create a host, this is where is going to live our shadow dom
 - Create the shadow root by Javascript
