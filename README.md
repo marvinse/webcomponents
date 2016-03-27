@@ -5,6 +5,7 @@ This is a little training that show us how to use web components without any fra
 Nowadays we have several problems with web development:
 
 1. The markup is unclear, for example we have a div inside another div that at the same time has another div inside, etc
+
   ```html
   <div>
     <div>
@@ -14,15 +15,19 @@ Nowadays we have several problems with web development:
   </div>
   ```
 2. We have conflict with styles, we are always afraid if someone adds some style and overwrites ours css
-  ```css
+  ```html
+  <style>
     h1{
       color:red;
     }
+  </style>  
   ```
-  ```css
+  ```html
+  <style>
     body h1{
       color:blue;  /* Uppps it overwrites the style above */
     }
+  </style>
   ```
 3. We dont have any native template, for this reason exists a lot of templates libraries like handlebars
 4. We are not able to bundle our code, I mean to package the CSS, the HTML and the JS in a single file
