@@ -54,3 +54,13 @@ Before continue looking at this master branch I suggest you to follow this order
 - [Webcomponents Intermediate 2](https://github.com/marvinse/webcomponents/tree/webcomponentsintermediate2): Finally in this branch I will be explaining:
   - How to style an insertion point
   - New CSS selector for shadow dom
+
+**After studying these 4 branches, I will show you the latest, and probably the most powerfull concept**
+## The import feature
+We can now using HTML5 import another html file
+`<link rel="import" href="url-to-web-component.html" />`. This is probably the most powerful web component concept, because it allow us to bundle our component in a single file. We can now use all concept learned (templates to separate our css, custom tags and insertions points to control our component behavior and shadow dom to add the desired structure to our component) and then import that component into a page.
+
+## Author
+[Marvin Solano Eduarte](https://cr.linkedin.com/in/marvinsolanoeduarte)
+- [github.com/marvinse](https://github.com/marvinse)
+- [twitter.com/marvinse92](https://twitter.com/marvinse92)
