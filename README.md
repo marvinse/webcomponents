@@ -13,7 +13,7 @@ Nowadays we have several problems with web development:
     </div>
   </div>
   ```
-2. We have conflict with styles, we are always afraid if someone adds some style and overwrites ours
+2. We have conflict with styles, we are always afraid if someone adds some style and overwrites ours css
   ```css
     h1{
       color:red;
