@@ -6,12 +6,12 @@ Nowadays we have several problems with web development:
 
 1. The markup is unclear, for example we have a div inside another div that at the same time has another div inside, etc
   ```html
+  <div>
     <div>
       <div>
-        <div>
-        </div>
       </div>
     </div>
+  </div>
   ```
 2. We have conflict with styles, we are always afraid if someone adds some style and overwrites ours
   ```css
