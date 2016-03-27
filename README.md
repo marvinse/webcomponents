@@ -3,6 +3,7 @@
 This is a little training that show us how to use web components without any framework like Polymer.
 
 Nowadays we have several problems with web development:
+
 1. The markup is unclear, for example we have a div inside another div that at the same time has another div inside, etc
 ```html
 <div>
