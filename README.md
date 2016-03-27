@@ -11,7 +11,11 @@ We can also create our custom elements.
 In order to create a custom element, we need to do 3 simple steps:
 - Create a new HTML Element
 - Create the callback, there are 4 callbacks (createdCallback, attachedCallback, detachedCallback and attributeChangeCallback)
-- We must register the element
+	- Created Callback: It´s executed when the instance is created
+	- Attached Callback: It´s executed when the instance is inserted into the DOM
+	- Detached Callback: It´s executed when the instance is removed into the DOM
+	- Attribute Change Callback: It´s executed when the attributes are changed, removed or added into the instance
+- We must register the element, it is a good practice to create a custom tag with a hyphen
 
 ```javascript
 var myComponent = Object.create(HTMLElement.prototype);
